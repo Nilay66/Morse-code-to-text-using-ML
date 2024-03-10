@@ -1,27 +1,11 @@
 class MorseConverter:
-
-    special_chars = ['.', ',', '?', ' ']
-
+    
     alphabet_to_morse = {'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', 'g':'--.', 'h':'....', \
                      'i': '..', 'j':'.---', 'k':'-.-', 'l':'.-..', 'm':'--', 'n':'-.', 'o':'---', 'p':'.--.', \
                      'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', \
                      'x': '-..-', 'y': '-.--', 'z': '--..', '0': '-----', '1': '.----', '2': '..---', \
                      '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', \
                      '9': '----.', '.': '.-.-.-', ',': '--..--', '?': '..--..', ' ': '*'}
-
-    @staticmethod
-    def _textToMorse(text):
-        morse = ''
-        text = text.lower()
-        if not MorseConverter._isText(text):
-            print('Error: Text input must include alphabet or numbers or punctuation marks or a question mark.')
-            return '-'
-        for i in range(len(text)):
-            morse += MorseConverter.alphabet_to_morse[text[i]]
-            if text[i] == ' ' or i == (len(text)-1):
-                continue
-            morse += '*'
-        return morse
 
     @staticmethod
     def _morseToText(morse):
@@ -47,12 +31,5 @@ class MorseConverter:
             if char == '.' or char == '-' or char == '*':
                 continue
             else:
-                return False
-        return True
-
-    @staticmethod
-    def _isText(text):
-        for char in set(text):
-            if (not char.isalnum()) and (char not in MorseConverter.special_chars):
                 return False
         return True
