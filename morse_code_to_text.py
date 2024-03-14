@@ -20,18 +20,18 @@ class MouseClicksMorse(QWidget):
 
         inst = QLabel()
         inst.setText('Instructions:\n Dot (.)\t:  Left Click\n Dash (-)\t:  Double Left Click\n Next Letter\t:  Right Click\n Next Word\t:  Double Right Click')
-        font = QtGui.QFont("MoolBoran", 18)
+        font = QtGui.QFont("MoolBoran", 16)
         font.setStyleHint(QtGui.QFont.TypeWriter)
         inst.setFont(font)
 
         grid = QGridLayout()
-        grid.setSpacing(5)
+        grid.setSpacing(10)
         grid.addWidget(inst, 1, 3)
-        grid.addWidget(self.inputArea, 1, 0, 5, 1)
-        grid.addWidget(self.inputArea.outputMorse, 3, 3)
-        grid.addWidget(self.inputArea.outputConverted, 4, 3)
-        grid.addWidget(self.inputArea.clearButton, 5, 3)
-
+        grid.addWidget(self.inputArea, 1, 0, 8, 1)
+        grid.addWidget(self.inputArea.photo, 2, 3)
+        grid.addWidget(self.inputArea.outputMorse, 4, 3, 2, 1)
+        grid.addWidget(self.inputArea.outputConverted, 6, 3, 2, 1)
+        grid.addWidget(self.inputArea.clearButton, 8, 3)
         self.setLayout(grid)
 
         self.setWindowTitle('Mouse Clicks - Morse Code Conversion')
@@ -68,12 +68,20 @@ class InputArea(QWidget):
         p.setColor(self.backgroundRole(), Qt.lightGray)
         self.setPalette(p)
         self.setAutoFillBackground(True)
+        image_path="misc\morse_img.jpg"
+        pixmap=QtGui.QPixmap(image_path)
+        resized_width = 620
+        resized_height = 1000
+        pixmap = pixmap.scaled(resized_width, resized_height, Qt.KeepAspectRatio)
+        self.photo=QLabel()
+        self.photo.setPixmap(pixmap)
+        self.photo.setScaledContents(True)
 
         self.outputMorse = QLabel()
         self.outputMorse.setText('Morse Code: ')
         self.outputConverted = QLabel()
         self.outputConverted.setText('Conv. Text: ')
-        font = QtGui.QFont("Consolas", 10)
+        font = QtGui.QFont("Consolas", 12)
         font.setStyleHint(QtGui.QFont.TypeWriter)
         self.outputMorse.setFont(font)
         self.outputConverted.setFont(font)
