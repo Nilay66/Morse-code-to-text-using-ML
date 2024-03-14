@@ -68,7 +68,7 @@ class InputArea(QWidget):
         p.setColor(self.backgroundRole(), Qt.lightGray)
         self.setPalette(p)
         self.setAutoFillBackground(True)
-        image_path="misc\morse_img.jpg"
+        image_path="morse_img.jpg"
         pixmap=QtGui.QPixmap(image_path)
         resized_width = 620
         resized_height = 1000
